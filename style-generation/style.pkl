@@ -296,7 +296,7 @@ layers {
       ["text-field"] = new { "coalesce"; new { "get"; "name:ja" }; new { "get"; "name" } }
       ["text-font"] = new {
         "case"
-        new { "!="; new { "index-of"; "JICA"; new { "get"; "name" } }; -1 }; new { "literal"; new { "Open Sans Bold" } }
+        new { "!="; new { "index-of"; "JICA"; new { "coalesce"; new { "get"; "name:ja" }; new { "get"; "name" } } }; -1 }; new { "literal"; new { "Open Sans Bold" } }
         new { "literal"; new { "Open Sans Regular" } }
       }
       ["text-size"] = 10
@@ -306,7 +306,7 @@ layers {
     paint {
       ["text-color"] = new {
         "case"
-        new { "!="; new { "index-of"; "JICA"; new { "get"; "name" } }; -1 }; "#0000ff"
+        new { "!="; new { "index-of"; "JICA"; new { "coalesce"; new { "get"; "name:ja" }; new { "get"; "name" } } }; -1 }; "#0000ff"
         "#cccccc"
       }
       ["text-halo-color"] = "#ffffff"

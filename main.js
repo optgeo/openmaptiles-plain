@@ -37,3 +37,18 @@ map.on('load', () => {
 
 // スケールコントロールを追加
 map.addControl(new maplibregl.ScaleControl({maxWidth: 100, unit: 'metric'}));
+
+// マップクリック時に属性を吹き出し表示（すべてのフィーチャを表示）
+map.on('click', (e) => {
+    const features = map.queryRenderedFeatures(e.point);
+    if (features.length > 0) {
+        const popupContent = features.map(feature => {
+            return `<strong>${feature.layer.id}</strong><br>${JSON.stringify(feature.properties, null, 2)}`;
+        }).join('<hr>');
+
+        const popup = new maplibregl.Popup({ closeOnClick: true })
+            .setLngLat(e.lngLat)
+            .setHTML(popupContent)
+            .addTo(map);
+    }
+});

@@ -419,8 +419,15 @@
               "index-of",
               "JICA",
               [
-                "get",
-                "name"
+                "coalesce",
+                [
+                  "get",
+                  "name:ja"
+                ],
+                [
+                  "get",
+                  "name"
+                ]
               ]
             ],
             -1
@@ -454,8 +461,15 @@
               "index-of",
               "JICA",
               [
-                "get",
-                "name"
+                "coalesce",
+                [
+                  "get",
+                  "name:ja"
+                ],
+                [
+                  "get",
+                  "name"
+                ]
               ]
             ],
             -1
