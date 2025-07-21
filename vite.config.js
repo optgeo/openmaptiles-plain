@@ -4,16 +4,15 @@ export default defineConfig({
     root: '.',
     build: {
         outDir: 'docs',
-        emptyOutDir: false, // style.jsonを保持するため
+        emptyOutDir: true, // docs フォルダを完全にクリア
         rollupOptions: {
             input: {
                 main: 'index.html'
             },
             output: {
-                // シンプルなファイル名で出力、ハッシュなし
-                entryFileNames: 'assets/main.js',
-                chunkFileNames: 'assets/[name].js',
-                assetFileNames: 'assets/[name].[ext]'
+                // main.js と main.css を docs 直下に出力
+                entryFileNames: 'main.js',
+                assetFileNames: '[name].[ext]'
             }
         }
     },
@@ -22,14 +21,8 @@ export default defineConfig({
         open: true,
         port: 3000
     },
-    
-    // ベースパス設定（GitHub Pagesの場合は相対パス）
     base: './',
-    
-    // アセット処理設定
     assetsInclude: ['**/*.json'],
-    
-    // 最適化設定
     esbuild: {
         target: 'es2020',
         minifyIdentifiers: true,
