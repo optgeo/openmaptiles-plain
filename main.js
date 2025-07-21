@@ -9,7 +9,7 @@ maplibregl.addProtocol("pmtiles", protocol.tile);
 // 環境に応じたstyle.jsonパスを決定
 const getStylePath = () => {
     // 開発環境の場合は絶対パス、本番環境の場合は相対パス
-    return import.meta.env.DEV ? '/docs/style.json' : './docs/style.json';
+    return import.meta.env.DEV ? '/docs/style.json' : './style.json';
 };
 
 // MapLibre GL JSマップの初期化
